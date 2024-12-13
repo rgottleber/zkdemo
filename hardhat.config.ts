@@ -1,7 +1,5 @@
 import { HardhatUserConfig } from 'hardhat/config';
-import '@matterlabs/hardhat-zksync-deploy';
-import '@matterlabs/hardhat-zksync-solc';
-import '@matterlabs/hardhat-zksync-verify';
+import '@matterlabs/hardhat-zksync';
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const ARBITRUM_SEPOLIA_RPC_URL = process.env.ARBITRUM_SEPOLIA_RPC_URL;

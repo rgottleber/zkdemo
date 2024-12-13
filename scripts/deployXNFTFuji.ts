@@ -10,7 +10,7 @@ async function main() {
     console.log("Deploying XNFT contract to Fuji...");
 
     // Get the deployer's signer
-    const [deployer] = await hre.ethers.getSigners();
+    const [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with account:", deployer.address);
 
     // Check deployer balance
@@ -22,7 +22,7 @@ async function main() {
     const chainIdFuji = "14767482510784806043";
 
     // Get the contract factory
-    const XNFT = await hre.ethers.getContractFactory("XNFT");
+    const XNFT = await ethers.getContractFactory("XNFT");
     
     console.log("Starting deployment...");
     const xNft = await XNFT.deploy(
@@ -36,7 +36,8 @@ async function main() {
 
     const deployedAddress = await xNft.getAddress();
     console.log(`XNFT deployed on ${network.name} at address: ${deployedAddress}`);
-    
+}
+
 main()
     .then(() => process.exit(0))
     .catch((error) => {
