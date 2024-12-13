@@ -1,7 +1,7 @@
 // scripts/mint.ts
 
-import { ethers, network } from "hardhat";
-import { Wallet } from "ethers";
+import { network } from "hardhat";
+import { ethers, Wallet } from "ethers";
 import { XNFT, XNFT__factory } from "../typechain-types";
 
 async function main() {

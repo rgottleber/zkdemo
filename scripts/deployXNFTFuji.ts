@@ -1,6 +1,7 @@
 // deployXNFTFuji.ts
 
-import { ethers, network } from "hardhat";
+import { network } from "hardhat";
+import { ethers } from "ethers";
 
 async function main() {
     const ccipRouterAddressFuji = `0xF694E193200268f9a4868e4Aa017A0118C9a8177`;

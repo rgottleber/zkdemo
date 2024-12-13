@@ -1,7 +1,7 @@
 // scripts/crossChainTransfer.ts
 
-import { ethers, network } from "hardhat";
-import { Wallet } from "ethers";
+import { network } from "hardhat";
+import { ethers, Wallet } from "ethers";
 import { XNFT, XNFT__factory } from "../typechain-types";
 
 async function main() {
@@ -21,8 +21,8 @@ async function main() {
   
   const from = `0xeA3977eCC954a820cc709f6Edf8b467FDbe085A9`;
   const to = `0xeA3977eCC954a820cc709f6Edf8b467FDbe085A9`;
-  const tokenId = 0; // put NFT token id here
-  const destinationChainSelector = `3478487238524512106`;
+  const tokenId = 2; // put NFT token id here
+  const destinationChainSelector = `6898391096552792247`;
   const payFeesIn = 1; // 0 - Native, 1 - LINK
 
   const xNft: XNFT = XNFT__factory.connect(xNftAddressFuji, signer);
