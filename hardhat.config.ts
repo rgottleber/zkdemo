@@ -4,6 +4,7 @@ import '@matterlabs/hardhat-zksync';
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const ARBITRUM_SEPOLIA_RPC_URL = process.env.ARBITRUM_SEPOLIA_RPC_URL;
 const FUJI_RPC_URL = process.env.FUJI_RPC_URL;
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
 
 const config: HardhatUserConfig = {
   zksolc: {
@@ -40,6 +41,13 @@ const config: HardhatUserConfig = {
       url: FUJI_RPC_URL !== undefined ? FUJI_RPC_URL : '',
       accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
       chainId: 43113,
+      zksync: false,
+    },
+    sepolia: {
+      url: SEPOLIA_RPC_URL !== undefined ? SEPOLIA_RPC_URL : '',
+      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+      chainId: 11155111,
+      gasPrice: 300000000000,
       zksync: false,
     },
     zkSyncSepoliaTestnet: {

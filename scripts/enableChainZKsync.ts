@@ -17,16 +17,16 @@ async function main() {
   const wallet = new Wallet(privateKey);
   const signer = wallet.connect(provider);
 
-  const xNftAddressZKsync = `0x363C549E7Ddc0e77a2bB9eA06f20c9f2C251c055`;
-  const xNftAddressFuji = `0xAC91DbC7cf20e00810803647f53b2bF7afa22C47`;
-  const chainSelectorFuji = `14767482510784806043`;
+  const xNftAddressZKsync = `0x128A98fc6115923Efb448E299CD4c42eB635B676`;
+  const xNftAddressSepolia = `0x85928Ef6C186cdf7b2EcAb43D50144Fd0842f22c`;
+  const chainSelectorSepolia = `16015286601757825753`;
   const ccipExtraArgs = `0x97a657c90000000000000000000000000000000000000000000000000000000000030d40`;
 
   const xNft: XNFT = XNFT__factory.connect(xNftAddressZKsync, signer);
 
   const tx = await xNft.enableChain(
-      chainSelectorFuji,
-      xNftAddressFuji,
+      chainSelectorSepolia,
+      xNftAddressSepolia,
       ccipExtraArgs
   );
 

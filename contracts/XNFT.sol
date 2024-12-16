@@ -28,7 +28,7 @@ contract XNFT is ERC721, ERC721URIStorage, ERC721Burnable, IAny2EVMMessageReceiv
     }
 
     error InvalidRouter(address router);
-    error OnlyOnFuji();
+    error OnlyOnZKsync();
     error NotEnoughBalanceForFees(uint256 currentBalance, uint256 calculatedFees);
     error NothingToWithdraw();
     error FailedToWithdrawEth(address owner, address target, uint256 value);
@@ -41,7 +41,7 @@ contract XNFT is ERC721, ERC721URIStorage, ERC721Burnable, IAny2EVMMessageReceiv
         bytes ccipExtraArgsBytes;
     }
 
-    uint256 constant FUJI_CHAIN_ID = 43113;
+    uint256 constant ZKsync_CHAIN_ID = 300;
 
     string[] characters = [
         "https://ipfs.io/ipfs/QmTgqnhFBMkfT9s8PHKcdXBn1f5bG3Q5hmBaR4U6hoTvb1?filename=Chainlink_Elf.png",
@@ -74,9 +74,9 @@ contract XNFT is ERC721, ERC721URIStorage, ERC721Burnable, IAny2EVMMessageReceiv
         _;
     }
 
-    modifier onlyOnFuji() {
-        if (block.chainid != FUJI_CHAIN_ID) {
-            revert OnlyOnFuji();
+    modifier onlyOnZKsync() {
+        if (block.chainid != ZKsync_CHAIN_ID) {
+            revert OnlyOnZKsync();
         }
         _;
     }
@@ -111,7 +111,7 @@ contract XNFT is ERC721, ERC721URIStorage, ERC721Burnable, IAny2EVMMessageReceiv
         i_currentChainSelector = currentChainSelector;
     }
 
-    function mint() external onlyOnFuji {
+    function mint() external onlyOnZKsync {
         uint256 tokenId = _nextTokenId++;
         _safeMint(msg.sender, tokenId);
     }
