@@ -28,7 +28,7 @@ contract XNFT is ERC721, ERC721URIStorage, ERC721Burnable, IAny2EVMMessageReceiv
     }
 
     error InvalidRouter(address router);
-    error OnlyOnZKsync();
+    error OnlyOnSepolia();
     error NotEnoughBalanceForFees(uint256 currentBalance, uint256 calculatedFees);
     error NothingToWithdraw();
     error FailedToWithdrawEth(address owner, address target, uint256 value);
@@ -41,7 +41,7 @@ contract XNFT is ERC721, ERC721URIStorage, ERC721Burnable, IAny2EVMMessageReceiv
         bytes ccipExtraArgsBytes;
     }
 
-    uint256 constant ZKsync_CHAIN_ID = 300;
+    uint256 constant SEPOLIA_CHAIN_ID = 11155111;
 
     string[] characters = [
         "https://ipfs.io/ipfs/QmTgqnhFBMkfT9s8PHKcdXBn1f5bG3Q5hmBaR4U6hoTvb1?filename=Chainlink_Elf.png",
@@ -74,9 +74,9 @@ contract XNFT is ERC721, ERC721URIStorage, ERC721Burnable, IAny2EVMMessageReceiv
         _;
     }
 
-    modifier onlyOnZKsync() {
-        if (block.chainid != ZKsync_CHAIN_ID) {
-            revert OnlyOnZKsync();
+    modifier onlyOnSepolia() {
+        if (block.chainid != SEPOLIA_CHAIN_ID) {
+            revert OnlyOnSepolia();
         }
         _;
     }
@@ -111,7 +111,7 @@ contract XNFT is ERC721, ERC721URIStorage, ERC721Burnable, IAny2EVMMessageReceiv
         i_currentChainSelector = currentChainSelector;
     }
 
-    function mint() external onlyOnZKsync {
+    function mint() external onlyOnSepolia {
         uint256 tokenId = _nextTokenId++;
         _safeMint(msg.sender, tokenId);
     }
